@@ -19,10 +19,10 @@ print("=" * 80)
 # 1. VERIFICAR ARQUIVO
 # ============================================================================
 if not os.path.exists(INPUT_FILE_PATH):
-    print(f"❌ ERRO: Arquivo não encontrado: {INPUT_FILE_PATH}")
+    print(f"ERRO: Arquivo não encontrado: {INPUT_FILE_PATH}")
     exit()
 
-print(f"✅ Arquivo encontrado")
+print(f" Arquivo encontrado")
 
 # ============================================================================
 # 2. FUNÇÃO PARA CONVERTER VALORES BRASILEIROS
@@ -69,7 +69,7 @@ def converter_valor_brasileiro(valor):
 # ============================================================================
 try:
     df = pd.read_excel(INPUT_FILE_PATH, sheet_name='Planilha1', header=None)
-    print(f"✅ Arquivo carregado: {df.shape[0]} linhas × {df.shape[1]} colunas")
+    print(f"Arquivo carregado: {df.shape[0]} linhas × {df.shape[1]} colunas")
 except Exception as e:
     print(f"❌ ERRO ao carregar: {e}")
     exit()
@@ -87,7 +87,7 @@ for col_idx in range(min(300, df.shape[1])):
     except:
         continue
 
-print(f"📅 Datas encontradas: {len(dates_info)}")
+print(f" Datas encontradas: {len(dates_info)}")
 
 # ============================================================================
 # 5. ENCONTRAR CLIENTES
@@ -199,7 +199,7 @@ try:
             adjusted_width = min(max_length + 2, 30)
             worksheet.column_dimensions[column_letter].width = adjusted_width
     
-    print(f"✅ Excel salvo com sucesso: {OUTPUT_FILE_PATH}")
+    print(f" Excel salvo com sucesso: {OUTPUT_FILE_PATH}")
     print(f"   • {len(df_final)} registros")
     print(f"   • {df_final.shape[1]} colunas")
     
@@ -209,9 +209,9 @@ except Exception as e:
     # Tentar método simples
     try:
         df_final.to_excel(OUTPUT_FILE_PATH, index=False)
-        print(f"✅ Salvo em formato simples")
+        print(f" Salvo em formato simples")
     except:
-        print("❌ Falha total ao salvar")
+        print(" Falha total ao salvar")
 
 # ============================================================================
 # 9. RESUMO FINAL
@@ -233,9 +233,10 @@ try:
 except:
     print(f"   • Total diárias: R$ 0,00")
 
-print(f"\n📍 Arquivo gerado em:")
+print(f"\n Arquivo gerado em:")
 print(f"   {os.path.abspath(OUTPUT_FILE_PATH)}")
 
 print("\n" + "=" * 80)
 print("CONCLUÍDO")
+
 print("=" * 80)
